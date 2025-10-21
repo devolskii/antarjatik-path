@@ -1,0 +1,5 @@
+{
+  "path": "../blpi-fe/**/*.{ts,tsx,js,jsx}",
+  "schema": "./schema.json",
+  "generates": "../blpi-fe/sanity/types.ts"
+}
