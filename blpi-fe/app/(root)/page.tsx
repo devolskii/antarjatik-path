@@ -2,6 +2,7 @@ import Link from "next/link";
 import { defineQuery } from "next-sanity";
 import { sanityFetch } from "@/sanity/live";
 import PostCard from "@/components/PostCard";
+import { Card } from "@/sanity/types";
 
 const HOME_QUERY = defineQuery(`*[
   _type == "post"
@@ -15,7 +16,7 @@ const home = async () => {
   return (
     <div className="fade-in">
       <ul>
-        {postCards.map((card) => (
+        {postCards.map((card: Card) => (
           <li key={card._id}>
             <Link
               className=" w-4/5 mx-auto my-4 hover:shadow-xl block"

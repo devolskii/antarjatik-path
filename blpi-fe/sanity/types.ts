@@ -173,8 +173,20 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-//Created by devolskii
-export type Blocks = Block[];
+/*
+===============================
+CREATED BY DEVOLSKII
+===============================
+*/
+
+export type Card = {
+  _id: string;
+  title: string;
+  slug: Slug;
+  description: string;
+  date: string;
+  mainImage: MainImage;
+};
 
 export type Block = {
   _key: string;
@@ -184,16 +196,19 @@ export type Block = {
   style: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
 };
 
+export type Blocks = Block[];
+
 export type Span = {
   _key: string;
   _type: "span";
   text: string;
-  marks?: string[];
+  marks?: { 0: string; text: string }[] | []; //CHECK HERE==================================
 };
 
+//Attached endnote at every instance of a block
 export type MarkDef = {
   _key: string;
-  _type: "endnote"; // e.g., 'link'
+  _type: "endnote"; //
   note: string;
 };
 
@@ -218,13 +233,13 @@ export type MainImage = {
   _type: "image";
 };
 
-export type Heading = {
+/* export type Heading = {
   _key: string;
-  _type: Block;
+  _type: "block";
   children: Span;
   style: "h1";
-  markDefs?: MarkDef;
-};
+  markDefs?: MarkDef[] | []; //CHECK HERE ===============================
+}; */
 
 export type TOCType = {
   title: string;
@@ -247,22 +262,3 @@ export type AllSanitySchemaTypes =
   | Slug
   | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
-// Source: ../blpi-fe/app/(root)/page.tsx
-// Variable: HOME_QUERY
-// Query: *[  _type == "post"]|order(date desc){_id, title, slug, description, date}
-export type HOME_QUERYResult = Array<{
-  _id: string;
-  title: string | null;
-  slug: Slug | null;
-  description: string | null;
-  date: string | null;
-  mainImage: MainImage;
-}>;
-
-// Query TypeMap
-import "@sanity/client";
-declare module "@sanity/client" {
-  interface SanityQueries {
-    '*[\n  _type == "post"\n]|order(date desc){_id, title, slug, description, date}': HOME_QUERYResult;
-  }
-}
