@@ -233,14 +233,6 @@ export type MainImage = {
   _type: "image";
 };
 
-/* export type Heading = {
-  _key: string;
-  _type: "block";
-  children: Span;
-  style: "h1";
-  markDefs?: MarkDef[] | []; //CHECK HERE ===============================
-}; */
-
 export type TOCType = {
   title: string;
   link: string;
