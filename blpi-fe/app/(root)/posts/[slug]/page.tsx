@@ -4,13 +4,12 @@ import {
   Block,
   Blocks,
   Content,
-  Heading,
   MarkDef,
   PullQuote,
   TOCType,
 } from "@/sanity/types";
-import { sanityFetch } from "@/sanity/live";
 
+import { sanityFetch } from "@/sanity/live";
 import Image from "next/image";
 import { urlFor } from "@/sanity/image";
 
@@ -76,9 +75,31 @@ export default async function PostPage({
     : "https://placehold.co/550x310/png";
 
   const { notes, seen } = extractEndnotes(content);
+
+  console.log("NOTES: ", notes);
+  /*
+    NOTES:  [
+    {
+      _key: 'be293779e695',
+      _type: 'endnote',
+      note: 'নে. স. র- নেতাজী সংগৃহীত রচনাবলী।'
+    },
+    {
+      _key: '1ef4c1aaa56f',
+      _type: 'endnote',
+      note: 'FQ.I.R – Fundamental Question of Indian Revolution. এই সবগুলোই নেতাজী রিসার্চ ব্যুরো কর্তৃক প্রকাশিত।'
+    }
+  ]
+  */
+
+  console.log("SEEN: ", seen);
+  /*
+SEEN:  Map(2) { 'be293779e695' => 1, '1ef4c1aaa56f' => 2 }
+*/
+
   const headings = extractHeadings(content);
 
-  console.log(headings);
+  //console.log(headings);
 
   const components = {
     marks: {
@@ -86,10 +107,10 @@ export default async function PostPage({
         //children,
         value,
       }: {
-        //children: React.ReactNode;
-        value: MarkDef;
+        //children?: React.ReactNode;
+        value?: MarkDef;
       }) => {
-        const noteNumber = seen.get(value._key);
+        const noteNumber = value?._key ? seen.get(value._key) : undefined;
         return (
           <sup>
             <a
@@ -104,23 +125,27 @@ export default async function PostPage({
       },
     },
     block: {
-      normal: ({ children }: { children: React.ReactNode }) => (
+      normal: ({ children }: { children?: React.ReactNode }) => (
         <p className="text-justify text-lg leading-relaxed">{children}</p>
       ),
       h1: ({
         children,
         value,
       }: {
-        children: React.ReactNode;
-        value: Heading;
-      }) => (
-        <a href={`#${value._key}`}>
-          <h1 id={value._key} className="text-3xl font-bold py-2">
-            {children}
-          </h1>
-        </a>
-      ),
-      h2: ({ children }: { children: React.ReactNode }) => (
+        children?: React.ReactNode;
+        value?: { _key?: string };
+      }) => {
+        console.log("Value: ", value);
+        console.log("Children: ", children);
+        return (
+          <a href={`#${value?._key}`}>
+            <h1 id={value?._key} className="text-3xl font-bold py-2">
+              {children}
+            </h1>
+          </a>
+        );
+      },
+      h2: ({ children }: { children?: React.ReactNode }) => (
         <h2 className="text-xl font-semibold">{children}</h2>
       ),
     },
@@ -132,10 +157,10 @@ export default async function PostPage({
       ),
     },
     list: {
-      bullet: ({ children }: { children: React.ReactNode }) => (
+      bullet: ({ children }: { children?: React.ReactNode }) => (
         <ul className="list-disc ml-6 text-lg">{children}</ul>
       ),
-      number: ({ children }: { children: React.ReactNode }) => (
+      number: ({ children }: { children?: React.ReactNode }) => (
         <ol className="list-decimal ml-6 text-lg">{children}</ol>
       ),
     },

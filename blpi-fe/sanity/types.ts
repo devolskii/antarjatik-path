@@ -202,12 +202,13 @@ export type Span = {
   _key: string;
   _type: "span";
   text: string;
-  marks?: string[];
+  marks?: { 0: string; text: string }[] | []; //CHECK HERE==================================
 };
 
+//Attached endnote at every instance of a block
 export type MarkDef = {
   _key: string;
-  _type: "endnote"; // e.g., 'link'
+  _type: "endnote"; //
   note: string;
 };
 
@@ -232,13 +233,13 @@ export type MainImage = {
   _type: "image";
 };
 
-export type Heading = {
+/* export type Heading = {
   _key: string;
-  _type: Block;
+  _type: "block";
   children: Span;
   style: "h1";
-  markDefs?: MarkDef;
-};
+  markDefs?: MarkDef[] | []; //CHECK HERE ===============================
+}; */
 
 export type TOCType = {
   title: string;
