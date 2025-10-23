@@ -30,7 +30,9 @@ const PostCard = ({
     <div>
       <Card className="font-serif">
         <CardHeader>
-          <CardTitle className="font-serif text-2xl">{title}</CardTitle>
+          <CardTitle className="font-serif text-xl xl:text-2xl">
+            {title}
+          </CardTitle>
         </CardHeader>
         <CardContent>
           <div className="flex gap-3">
