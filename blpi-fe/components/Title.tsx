@@ -29,16 +29,20 @@ export default function Title({
 
   return (
     <div className="flex items-center gap-x-3 sticky top-0 bg-white xl:relative">
-      <div className="xl:hidden">
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <button>
-              <List />
-            </button>
-          </DropdownMenuTrigger>
-          <TOCMobile headings={headings} />
-        </DropdownMenu>
-      </div>
+      {headings.length ? (
+        <div className="xl:hidden">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <button>
+                <List />
+              </button>
+            </DropdownMenuTrigger>
+            <TOCMobile headings={headings} />
+          </DropdownMenu>
+        </div>
+      ) : (
+        ""
+      )}
       <div
         id="sticky-header"
         className={`sticky top-0 bg-white z-50 transition-all duration-300`}

@@ -76,7 +76,7 @@ export default async function PostPage({
 
   const { notes, seen } = extractEndnotes(content);
 
-  console.log("NOTES: ", notes);
+  //console.log("NOTES: ", notes);
   /*
     NOTES:  [
     {
@@ -92,7 +92,7 @@ export default async function PostPage({
   ]
   */
 
-  console.log("SEEN: ", seen);
+  //console.log("SEEN: ", seen);
   /*
 SEEN:  Map(2) { 'be293779e695' => 1, '1ef4c1aaa56f' => 2 }
 */
@@ -126,7 +126,7 @@ SEEN:  Map(2) { 'be293779e695' => 1, '1ef4c1aaa56f' => 2 }
     },
     block: {
       normal: ({ children }: { children?: React.ReactNode }) => (
-        <p className="text-justify text-lg leading-relaxed">{children}</p>
+        <p className="text-justify text-lg leading-relaxed mb-4">{children}</p>
       ),
       h1: ({
         children,
@@ -135,8 +135,8 @@ SEEN:  Map(2) { 'be293779e695' => 1, '1ef4c1aaa56f' => 2 }
         children?: React.ReactNode;
         value?: { _key?: string };
       }) => {
-        console.log("Value: ", value);
-        console.log("Children: ", children);
+        //console.log("Value: ", value);
+        //console.log("Children: ", children);
         return (
           <a href={`#${value?._key}`}>
             <h1 id={value?._key} className="text-3xl font-bold py-2">
@@ -178,7 +178,7 @@ SEEN:  Map(2) { 'be293779e695' => 1, '1ef4c1aaa56f' => 2 }
       </p>
       <hr className="mb-4" />
       <div className="flex">
-        <div className="xl:w-4/6 mx-auto">
+        <div className={`xl:w-4/6 {headings.length ? "mx-auto" : ""}`}>
           <div className="">
             <figure className="mb-4">
               <Image
@@ -196,9 +196,13 @@ SEEN:  Map(2) { 'be293779e695' => 1, '1ef4c1aaa56f' => 2 }
           </div>
           <PortableText value={content} components={components} />
         </div>
-        <nav className="hidden xl:w-2/6 ml-3 h-fit sticky top-4 self-start xl:block">
-          <TOC headings={headings} />
-        </nav>
+        {headings.length ? (
+          <nav className="hidden xl:w-2/6 ml-3 h-fit sticky top-4 self-start xl:block">
+            <TOC headings={headings} />
+          </nav>
+        ) : (
+          ""
+        )}
       </div>
       {notes.length > 0 && (
         <section className="mt-8 mb-10">

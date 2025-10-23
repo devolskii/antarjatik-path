@@ -34,7 +34,7 @@ const PostCard = ({
         </CardHeader>
         <CardContent>
           <div className="flex gap-3">
-            <div className="w-4/5">
+            <div className="hidden md:block md:w-4/5">
               <p>{desc}</p>
             </div>
             <div className="">
@@ -43,7 +43,7 @@ const PostCard = ({
                 alt={title}
                 className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center "
                 height="200"
-                width="200"
+                width="350"
               />
             </div>
           </div>

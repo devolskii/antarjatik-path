@@ -19,7 +19,7 @@ const home = async () => {
         {postCards.map((card: Card) => (
           <li key={card._id}>
             <Link
-              className=" w-4/5 mx-auto my-4 hover:shadow-xl block"
+              className="mx-auto my-4 hover:shadow-xl block"
               href={`/posts/${card.slug?.current}`}
             >
               <PostCard
