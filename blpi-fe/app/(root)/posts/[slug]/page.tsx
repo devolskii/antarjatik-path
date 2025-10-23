@@ -167,7 +167,7 @@ SEEN:  Map(2) { 'be293779e695' => 1, '1ef4c1aaa56f' => 2 }
   };
 
   return (
-    <article className="font-sans fade-in">
+    <article className="font-serif fade-in">
       <Title title={title} headings={headings} />
 
       <p className="">
@@ -184,7 +184,7 @@ SEEN:  Map(2) { 'be293779e695' => 1, '1ef4c1aaa56f' => 2 }
               <Image
                 src={imageUrl}
                 alt={title}
-                className="mx-auto overflow-hidden rounded-xl object-cover object-center "
+                className="mx-auto overflow-hidden object-cover object-center "
                 height="500"
                 width="700"
               />

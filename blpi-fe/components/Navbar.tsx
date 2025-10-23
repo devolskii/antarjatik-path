@@ -5,12 +5,12 @@ const Navbar = () => {
   return (
     <header>
       <Header />
-      <Menubar className="text-sm flex justify-center font-serif">
+      <Menubar className="!rounded-none text-sm flex justify-center font-sans">
         <MenubarMenu>
-          <MenubarTrigger>বিশ্লেষণ</MenubarTrigger>
+          <MenubarTrigger>বিশ্লেষণ/তত্ত্ব</MenubarTrigger>
         </MenubarMenu>
         <MenubarMenu>
-          <MenubarTrigger>তত্ত্ব</MenubarTrigger>
+          <MenubarTrigger>বিবৃতি</MenubarTrigger>
         </MenubarMenu>
         <MenubarMenu>
           <MenubarTrigger>আমাদের সম্পর্কে</MenubarTrigger>

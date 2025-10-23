@@ -28,9 +28,9 @@ const PostCard = ({
     : "https://placehold.co/550x310/png";
   return (
     <div>
-      <Card className="font-sans">
+      <Card className="font-serif">
         <CardHeader>
-          <CardTitle className="font-sans text-2xl">{title}</CardTitle>
+          <CardTitle className="font-serif text-2xl">{title}</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="flex gap-3">
@@ -41,7 +41,7 @@ const PostCard = ({
               <Image
                 src={imageUrl}
                 alt={title}
-                className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center "
+                className="mx-auto aspect-video overflow-hidden object-cover object-center "
                 height="200"
                 width="350"
               />

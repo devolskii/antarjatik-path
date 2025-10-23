@@ -29,7 +29,7 @@ const TOC = ({ headings }: { headings: TOCType[] }) => {
   }, [headings]);
 
   return (
-    <div className="border rounded-md font-serif p-3 w-fit">
+    <div className="border font-serif p-3 w-fit">
       <h1 className="text-2xl font-bold mb-2">সূচি</h1>
       <ul className="space-y-1">
         {headings.map(({ title, link }) => (
