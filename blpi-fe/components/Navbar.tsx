@@ -40,8 +40,8 @@ const Navbar = () => {
         </MenubarMenu>
         <Separator orientation="vertical" />
         <MenubarMenu>
-          <MenubarTrigger className="rounded-none">
-            <Search className="lg:hidden" />
+          <MenubarTrigger className="lg:hidden rounded-none">
+            <Search className="" />
           </MenubarTrigger>
           <MenubarContent className="rounded-none">
             <InputGroup className="rounded-none">
