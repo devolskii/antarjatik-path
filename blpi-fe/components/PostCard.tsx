@@ -28,9 +28,9 @@ const PostCard = ({
     : "https://placehold.co/550x310/png";
   return (
     <div>
-      <Card className="font-serif">
+      <Card className="font-sans">
         <CardHeader>
-          <CardTitle className="font-serif text-xl xl:text-2xl">
+          <CardTitle className="font-sans text-xl xl:text-2xl">
             {title}
           </CardTitle>
         </CardHeader>
