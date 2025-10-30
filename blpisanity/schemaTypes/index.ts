@@ -1,3 +1,4 @@
 import {postType} from './postType'
+import {tagType} from './tagType'
 
-export const schemaTypes = [postType]
+export const schemaTypes = [postType, tagType]

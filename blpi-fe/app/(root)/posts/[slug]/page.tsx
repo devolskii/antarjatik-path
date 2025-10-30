@@ -22,6 +22,10 @@ const POST_QUERY = defineQuery(`
   ][0]{title, content, date, mainImage}
   `);
 
+const TITLE_QUERY = defineQuery(`
+*[slug.current == $slug][0]{title}
+`);
+
 function extractEndnotes(content: Content) {
   const notes: MarkDef[] = [];
   const seen: Map<string, number> = new Map();
@@ -55,11 +59,29 @@ const extractHeadings = (content: Content) => {
   return headings;
 };
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  // console.log(await params);
+
+  const title = await sanityFetch({
+    query: TITLE_QUERY,
+    params: await params,
+  });
+  // console.log(await title);
+  return await {
+    title: title.data.title,
+  };
+}
+
 export default async function PostPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
+  //console.log(await params);
   const { data: post } = await sanityFetch({
     query: POST_QUERY,
     params: await params,

@@ -112,11 +112,11 @@ export const postType = defineType({
         }),
       ],
     }),
-    /* defineField({
+    defineField({
       type: 'array',
       name: 'topic',
       title: 'Topic',
       of: [defineArrayMember({type: 'reference', to: [{type: 'tag'}]})],
-    }), */
+    }),
   ],
 })

@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   title: "Antarjatik Path",
   description: "Central Organ of Bolshevik Leninist Party, India",
   keywords:
-    "Antarjatik Path, BLPI, Marxism, Marxist, Journal, Theory, Articles",
+    "Antarjatik Path, BLPI, Marxism, Marxist, Journal, Theory, Articles, Communism, Trotskyism, Trotsky, Lenin, Marx, Engels, Rosa Luxemburg",
 };
 
 export default function RootLayout({

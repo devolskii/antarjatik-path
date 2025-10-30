@@ -23,7 +23,7 @@ const Header = () => {
               <MenubarItem>বিশ্লেষণ/তত্ত্ব</MenubarItem>
               <MenubarItem>বিবৃতি</MenubarItem>{" "}
               <MenubarItem>আমাদের সম্পর্কে</MenubarItem>{" "}
-              <MenubarItem>বই/পত্রিকা</MenubarItem>{" "}
+              <MenubarItem>বই/পত্রিকা PDF</MenubarItem>{" "}
               <InputGroup className="rounded-none border">
                 <InputGroupInput placeholder="Search..." />
                 <InputGroupAddon>

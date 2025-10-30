@@ -6,7 +6,7 @@ import { Card } from "@/sanity/types";
 
 const HOME_QUERY = defineQuery(`*[
   _type == "post"
-]|order(date desc){_id, title, slug, description, date, mainImage}`);
+]|order(date desc){_id, title, slug, description, date, mainImage, topic[]{_key, _ref, "name": @->name}}`);
 
 const home = async () => {
   const { data: postCards } = await sanityFetch({
@@ -30,6 +30,7 @@ const home = async () => {
                   year: "numeric",
                 })}
                 image={card.mainImage}
+                topics={card.topic}
               />
             </Link>
           </li>

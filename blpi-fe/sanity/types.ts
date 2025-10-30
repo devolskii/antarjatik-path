@@ -186,6 +186,13 @@ export type Card = {
   description: string;
   date: string;
   mainImage: MainImage;
+  topic: Topic[];
+};
+
+export type Topic = {
+  _id: string;
+  _ref: string;
+  name: string;
 };
 
 export type Block = {

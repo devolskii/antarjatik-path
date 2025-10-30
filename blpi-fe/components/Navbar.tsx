@@ -35,7 +35,7 @@ const Navbar = () => {
         <Separator orientation="vertical" />
         <MenubarMenu>
           <MenubarTrigger className="text-sm xl:text-lg ">
-            বই/পত্রিকা
+            বই/পত্রিকা PDF
           </MenubarTrigger>
         </MenubarMenu>
         <Separator orientation="vertical" />
@@ -51,7 +51,7 @@ const Navbar = () => {
               </InputGroupAddon>
             </InputGroup>
           </MenubarContent>
-          <InputGroup className="hidden lg:flex max-w-xs rounded-none">
+          <InputGroup className="hidden lg:flex max-w-sm rounded-none">
             <InputGroupInput placeholder="Search..." />
             <InputGroupAddon>
               <Search />
