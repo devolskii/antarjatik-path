@@ -58,16 +58,17 @@ const PostCard = ({
         </CardContent>
         <CardFooter>
           <p className="">{date}</p>
-
-          {topics.map((topic: Topic) => (
-            <li key={topic._key}>
-              <Button variant="outline" className="ml-4">
-                <Link href={`/topic/${topic._ref}`} className="">
-                  {topic.name}
-                </Link>
-              </Button>
-            </li>
-          ))}
+          <ul className="flex">
+            {topics.map((topic: Topic) => (
+              <li key={topic._key}>
+                <Button variant="outline" className="ml-4">
+                  <Link href={`/topic/${topic._ref}`} className="">
+                    {topic.name}
+                  </Link>
+                </Button>
+              </li>
+            ))}
+          </ul>
         </CardFooter>
       </Card>
     </div>
