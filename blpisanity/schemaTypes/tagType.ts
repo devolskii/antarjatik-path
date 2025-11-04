@@ -11,6 +11,12 @@ export const tagType = defineType({
       validation: (e) => e.required(),
     }),
     defineField({
+      type: 'slug',
+      name: 'slug',
+      title: 'slug',
+      validation: (e) => e.required(),
+    }),
+    defineField({
       type: 'array',
       name: 'posts',
       title: 'posts',
