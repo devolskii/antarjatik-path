@@ -57,7 +57,7 @@ const PostCard = ({
             {topic.map((eachTopic: Topic) => (
               <li key={eachTopic._key}>
                 <Button variant="outline" className="ml-4">
-                  <Link href={`/Topic/${eachTopic._ref}`} className="">
+                  <Link href={`/tag/${eachTopic.slug.current}`} className="">
                     {eachTopic.name}
                   </Link>
                 </Button>

@@ -192,8 +192,8 @@ export type CardType = {
 export type Topic = {
   _key: string;
   _id?: string;
-  _ref: string;
   name: string;
+  slug: Slug;
 };
 
 export type Block = {

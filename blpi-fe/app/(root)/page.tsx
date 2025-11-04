@@ -6,7 +6,7 @@ import { CardType } from "@/sanity/types";
 
 const HOME_QUERY = defineQuery(`*[
   _type == "post"
-]|order(date desc){_id, title, slug, description, date, mainImage, topic[]{_key, _ref, "name": @->name}}`);
+]|order(date desc){_id, title, slug, description, date, mainImage, topic[]{_key, "slug": @->slug, "name": @->name}}`);
 
 const home = async () => {
   const postCards = await client.fetch(HOME_QUERY);
