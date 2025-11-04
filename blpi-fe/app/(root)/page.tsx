@@ -1,8 +1,8 @@
-import Link from "next/link";
+// import Link from "next/link";
 import { defineQuery } from "next-sanity";
 import { client } from "@/sanity/client";
 import PostCard from "@/components/PostCard";
-import { Card } from "@/sanity/types";
+import { CardType } from "@/sanity/types";
 
 const HOME_QUERY = defineQuery(`*[
   _type == "post"
@@ -15,23 +15,19 @@ const home = async () => {
   return (
     <div className="fade-in">
       <ul>
-        {postCards.map((card: Card) => (
-          <li key={card._id}>
-            <Link
-              className="mx-auto my-4 hover:shadow-xl block"
-              href={`/posts/${card.slug?.current}`}
-            >
-              <PostCard
-                title={card.title}
-                desc={card.description}
-                date={new Date(card.date).toLocaleDateString("bn-in", {
-                  month: "long",
-                  year: "numeric",
-                })}
-                image={card.mainImage}
-                topics={card.topic}
-              />
-            </Link>
+        {postCards.map((card: CardType) => (
+          <li key={card._id} className="mx-auto my-4 hover:shadow-xl block">
+            <PostCard
+              title={card.title}
+              description={card.description}
+              date={new Date(card.date).toLocaleDateString("bn-in", {
+                month: "long",
+                year: "numeric",
+              })}
+              mainImage={card.mainImage}
+              topic={card.topic}
+              slug={card.slug}
+            />
           </li>
         ))}
       </ul>

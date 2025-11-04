@@ -179,8 +179,8 @@ CREATED BY DEVOLSKII
 ===============================
 */
 
-export type Card = {
-  _id: string;
+export type CardType = {
+  _id?: string;
   title: string;
   slug: Slug;
   description: string;
