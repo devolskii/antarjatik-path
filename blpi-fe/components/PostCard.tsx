@@ -1,9 +1,7 @@
 import { MainImage, Topic } from "@/sanity/types";
 import {
   Card,
-  CardAction,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,

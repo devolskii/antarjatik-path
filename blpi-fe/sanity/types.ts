@@ -190,7 +190,8 @@ export type Card = {
 };
 
 export type Topic = {
-  _id: string;
+  _key: string;
+  _id?: string;
   _ref: string;
   name: string;
 };
