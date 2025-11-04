@@ -1,4 +1,4 @@
-import { CardType, MainImage, Topic } from "@/sanity/types";
+import { CardType, Topic } from "@/sanity/types";
 import {
   Card,
   CardContent,
