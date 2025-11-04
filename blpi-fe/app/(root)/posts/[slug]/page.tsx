@@ -9,9 +9,10 @@ import {
   TOCType,
 } from "@/sanity/types";
 
-import { sanityFetch } from "@/sanity/live";
+// import { sanityFetch } from "@/sanity/live";
 import Image from "next/image";
 import { urlFor } from "@/sanity/image";
+import { client } from "@/sanity/client";
 
 import TOC from "@/components/TOC";
 import Title from "@/components/Title";
@@ -66,13 +67,10 @@ export async function generateMetadata({
 }) {
   // console.log(await params);
 
-  const title = await sanityFetch({
-    query: TITLE_QUERY,
-    params: await params,
-  });
+  const title = await client.fetch(TITLE_QUERY, await params);
   // console.log(await title);
   return await {
-    title: title.data.title,
+    title: title,
   };
 }
 
@@ -82,10 +80,7 @@ export default async function PostPage({
   params: Promise<{ slug: string }>;
 }) {
   //console.log(await params);
-  const { data: post } = await sanityFetch({
-    query: POST_QUERY,
-    params: await params,
-  });
+  const post = await client.fetch(POST_QUERY, await params);
   if (!post) {
     notFound();
   }

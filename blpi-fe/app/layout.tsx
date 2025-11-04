@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import { Noto_Sans_Bengali, Noto_Serif_Bengali } from "next/font/google";
 import "./globals.css";
 
-import { SanityLive } from "@/sanity/live";
-
 const bengaliSans = Noto_Sans_Bengali({
   variable: "--font-bengali-sans",
   subsets: ["bengali"],
@@ -32,7 +30,6 @@ export default function RootLayout({
         className={`${bengaliSans.variable} ${bengaliSerif.variable} antialiased`}
       >
         {children}
-        <SanityLive />
       </body>
     </html>
   );

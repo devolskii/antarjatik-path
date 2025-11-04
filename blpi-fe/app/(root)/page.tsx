@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { defineQuery } from "next-sanity";
-import { sanityFetch } from "@/sanity/live";
+import { client } from "@/sanity/client";
 import PostCard from "@/components/PostCard";
 import { Card } from "@/sanity/types";
 
@@ -9,9 +9,8 @@ const HOME_QUERY = defineQuery(`*[
 ]|order(date desc){_id, title, slug, description, date, mainImage, topic[]{_key, _ref, "name": @->name}}`);
 
 const home = async () => {
-  const { data: postCards } = await sanityFetch({
-    query: HOME_QUERY,
-  });
+  const postCards = await client.fetch(HOME_QUERY);
+  console.log(postCards);
 
   return (
     <div className="fade-in">
