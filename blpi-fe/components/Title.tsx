@@ -10,7 +10,7 @@ export default function Title({
   headings,
 }: {
   title: string;
-  headings: TOCType[];
+  headings?: TOCType[];
 }) {
   const [isSticky, setIsSticky] = useState(false);
 
@@ -29,7 +29,7 @@ export default function Title({
 
   return (
     <div className="flex items-center gap-x-3 sticky top-0 bg-white xl:relative">
-      {headings.length ? (
+      {headings?.length ? (
         <div className="xl:hidden">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>

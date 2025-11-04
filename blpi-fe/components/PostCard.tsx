@@ -1,4 +1,4 @@
-import { CardType, Topic } from "@/sanity/types";
+import { MainImage, Slug, Topic } from "@/sanity/types";
 import {
   Card,
   CardContent,
@@ -19,7 +19,14 @@ const PostCard = ({
   mainImage,
   topic,
   slug,
-}: CardType) => {
+}: {
+  title: string;
+  description: string;
+  date: string;
+  mainImage?: MainImage;
+  topic: Topic[];
+  slug: Slug;
+}) => {
   const imageUrl = mainImage
     ? urlFor(mainImage).height(310).width(550).quality(80).auto("format").url()
     : "https://placehold.co/550x310/png";
@@ -54,10 +61,10 @@ const PostCard = ({
         <CardFooter>
           <p className="">{date}</p>
           <ul className="flex">
-            {topic.map((eachTopic: Topic) => (
-              <li key={eachTopic._key}>
+            {topic?.map((eachTopic: Topic) => (
+              <li key={eachTopic._id}>
                 <Button variant="outline" className="ml-4">
-                  <Link href={`/tag/${eachTopic.slug.current}`} className="">
+                  <Link href={`/tag/${eachTopic.slug?.current}`} className="">
                     {eachTopic.name}
                   </Link>
                 </Button>

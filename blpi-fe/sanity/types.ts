@@ -180,7 +180,7 @@ CREATED BY DEVOLSKII
 */
 
 export type CardType = {
-  _id?: string;
+  _id: string;
   title: string;
   slug: Slug;
   description: string;
@@ -190,8 +190,7 @@ export type CardType = {
 };
 
 export type Topic = {
-  _key: string;
-  _id?: string;
+  _id: string;
   name: string;
   slug: Slug;
 };

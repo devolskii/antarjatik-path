@@ -23,7 +23,7 @@ const POST_QUERY = defineQuery(`
   `);
 
 const TITLE_QUERY = defineQuery(`
-*[slug.current == $slug][0]{title}
+*[_type == "post" && slug.current == $slug][0]{title}
 `);
 
 function extractEndnotes(content: Content) {
