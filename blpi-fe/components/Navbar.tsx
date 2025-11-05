@@ -18,11 +18,18 @@ import { client } from "@/sanity/client";
 import Link from "next/link";
 import { Slug } from "@/sanity/types";
 
-const MENU_QUERY = defineQuery(`*[_type=="tag"]{_id, name, slug}`);
+const TOPIC_QUERY = defineQuery(`*[_type=="tag"]{_id, name, slug}`);
+const YEAR_QUERY = defineQuery(`
+  *[_type=="year"]|order(name desc){
+    _id, 
+    name,
+    slug,
+  }
+`);
 
 const Navbar = async () => {
-  const tags = await client.fetch(MENU_QUERY);
-  console.log(tags);
+  const tags = await client.fetch(TOPIC_QUERY);
+  const years = await client.fetch(YEAR_QUERY);
 
   return (
     <header className="">
@@ -37,25 +44,19 @@ const Navbar = async () => {
                 <MenubarItem>{tag.name}</MenubarItem>
               </Link>
             ))}
-            {/*             <MenubarItem>বিশ্লেষণ/তত্ত্ব</MenubarItem>
-            <MenubarItem>বিবৃতি</MenubarItem>
-            <MenubarItem>আন্তর্জাতিক পরিস্থিতি</MenubarItem>
-            <MenubarItem>চিঠি-পত্র</MenubarItem> */}
             <MenubarSeparator />
             <MenubarSub>
               <MenubarSubTrigger>বছর অনুযায়ী</MenubarSubTrigger>
               <MenubarSubContent className="rounded-none">
-                <MenubarItem>২০২৫</MenubarItem>
-                <MenubarItem>২০২৪</MenubarItem>
-                <MenubarItem>২০২৩</MenubarItem>
-                <MenubarItem>২০২২</MenubarItem>
-                <MenubarItem>২০২১</MenubarItem>
-                <MenubarItem>২০২০</MenubarItem>
-                <MenubarItem>২০১৯</MenubarItem>
-                <MenubarItem>২০১৮</MenubarItem>
+                {years.map(
+                  (year: { _id: string; name: string; slug: Slug }) => (
+                    <Link key={year._id} href={`/year/${year.slug.current}`}>
+                      <MenubarItem>{year.name}</MenubarItem>
+                    </Link>
+                  )
+                )}
               </MenubarSubContent>
             </MenubarSub>
-            <MenubarSeparator />
           </MenubarContent>
         </MenubarMenu>
         <Separator orientation="vertical" />
