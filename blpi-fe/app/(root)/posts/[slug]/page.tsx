@@ -189,21 +189,20 @@ SEEN:  Map(2) { 'be293779e695' => 1, '1ef4c1aaa56f' => 2 }
       <hr className="mb-4" />
       <div className="flex">
         <div className={`xl:w-4/6 {headings.length ? "mx-auto" : ""}`}>
-          <div className="">
-            <figure className="mb-4">
-              <Image
-                src={imageUrl}
-                alt={title}
-                className="mx-auto overflow-hidden object-cover object-center "
-                height="500"
-                width="700"
-              />
+          <figure className="mb-4">
+            <Image
+              src={imageUrl}
+              alt={title}
+              className="mx-auto overflow-hidden object-cover object-center "
+              height="500"
+              width="700"
+            />
 
-              <figcaption className="text-gray-500 text-center text-sm mt-2">
-                {mainImage.caption}
-              </figcaption>
-            </figure>
-          </div>
+            <figcaption className="text-gray-500 text-center text-sm mt-2">
+              {mainImage.caption}
+            </figcaption>
+          </figure>
+
           <PortableText value={content} components={components} />
         </div>
         {headings.length ? (

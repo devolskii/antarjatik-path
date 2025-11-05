@@ -14,7 +14,7 @@ const bengaliSerif = Noto_Serif_Bengali({
 
 export const metadata: Metadata = {
   title: "Antarjatik Path",
-  description: "Central Organ of Bolshevik Leninist Party, India",
+  description: "Central Organ of the Bolshevik Leninist Party, India",
   keywords:
     "Antarjatik Path, BLPI, Marxism, Marxist, Journal, Theory, Articles, Communism, Trotskyism, Trotsky, Lenin, Marx, Engels, Rosa Luxemburg",
 };

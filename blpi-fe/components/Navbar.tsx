@@ -13,7 +13,17 @@ import {
 } from "./ui/menubar";
 import { InputGroup, InputGroupAddon, InputGroupInput } from "./ui/input-group";
 import { Separator } from "./ui/separator";
-const Navbar = () => {
+import { defineQuery } from "next-sanity";
+import { client } from "@/sanity/client";
+import Link from "next/link";
+import { Slug } from "@/sanity/types";
+
+const MENU_QUERY = defineQuery(`*[_type=="tag"]{_id, name, slug}`);
+
+const Navbar = async () => {
+  const tags = await client.fetch(MENU_QUERY);
+  console.log(tags);
+
   return (
     <header className="">
       <Header />
@@ -22,10 +32,15 @@ const Navbar = () => {
         <MenubarMenu>
           <MenubarTrigger className="text-sm xl:text-lg ">বিষয়</MenubarTrigger>
           <MenubarContent className="rounded-none">
-            <MenubarItem>বিশ্লেষণ/তত্ত্ব</MenubarItem>
+            {tags.map((tag: { _id: string; name: string; slug: Slug }) => (
+              <Link key={tag._id} href={`/tag/${tag.slug?.current}`}>
+                <MenubarItem>{tag.name}</MenubarItem>
+              </Link>
+            ))}
+            {/*             <MenubarItem>বিশ্লেষণ/তত্ত্ব</MenubarItem>
             <MenubarItem>বিবৃতি</MenubarItem>
             <MenubarItem>আন্তর্জাতিক পরিস্থিতি</MenubarItem>
-            <MenubarItem>চিঠি-পত্র</MenubarItem>
+            <MenubarItem>চিঠি-পত্র</MenubarItem> */}
             <MenubarSeparator />
             <MenubarSub>
               <MenubarSubTrigger>বছর অনুযায়ী</MenubarSubTrigger>
