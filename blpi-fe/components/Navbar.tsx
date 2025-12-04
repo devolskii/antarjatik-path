@@ -1,4 +1,3 @@
-import { ListFilter, Search } from "lucide-react";
 import Header from "./Header";
 import {
   Menubar,
@@ -11,12 +10,12 @@ import {
   MenubarSubTrigger,
   MenubarTrigger,
 } from "./ui/menubar";
-import { InputGroup, InputGroupAddon, InputGroupInput } from "./ui/input-group";
 import { Separator } from "./ui/separator";
 import { defineQuery } from "next-sanity";
 import { client } from "@/sanity/client";
 import Link from "next/link";
 import { Slug } from "@/sanity/types";
+import SearchBar from "./SearchBar";
 
 const TOPIC_QUERY = defineQuery(`*[_type=="tag"]{_id, name, slug}`);
 const YEAR_QUERY = defineQuery(`
@@ -41,17 +40,21 @@ const Navbar = async () => {
           <MenubarContent className="rounded-none">
             {tags.map((tag: { _id: string; name: string; slug: Slug }) => (
               <Link key={tag._id} href={`/tag/${tag.slug?.current}`}>
-                <MenubarItem>{tag.name}</MenubarItem>
+                <MenubarItem className="font-sans">{tag.name}</MenubarItem>
               </Link>
             ))}
             <MenubarSeparator />
             <MenubarSub>
-              <MenubarSubTrigger>বছর অনুযায়ী</MenubarSubTrigger>
+              <MenubarSubTrigger className="font-sans">
+                বছর অনুযায়ী
+              </MenubarSubTrigger>
               <MenubarSubContent className="rounded-none">
                 {years.map(
                   (year: { _id: string; name: string; slug: Slug }) => (
                     <Link key={year._id} href={`/year/${year.slug.current}`}>
-                      <MenubarItem>{year.name}</MenubarItem>
+                      <MenubarItem className="font-sans">
+                        {year.name}
+                      </MenubarItem>
                     </Link>
                   )
                 )}
@@ -67,23 +70,7 @@ const Navbar = async () => {
         </MenubarMenu>
         <Separator orientation="vertical" />
         <MenubarMenu>
-          <MenubarTrigger className="lg:hidden rounded-none">
-            <Search className="" />
-          </MenubarTrigger>
-          <MenubarContent className="rounded-none">
-            <InputGroup className="rounded-none">
-              <InputGroupInput placeholder="Search..." />
-              <InputGroupAddon>
-                <Search />
-              </InputGroupAddon>
-            </InputGroup>
-          </MenubarContent>
-          <InputGroup className="hidden lg:flex max-w-sm rounded-none">
-            <InputGroupInput placeholder="Search..." />
-            <InputGroupAddon>
-              <Search />
-            </InputGroupAddon>
-          </InputGroup>
+          <SearchBar />
         </MenubarMenu>{" "}
         <Separator orientation="vertical" />
         <MenubarMenu>
@@ -95,12 +82,6 @@ const Navbar = async () => {
         <MenubarMenu>
           <MenubarTrigger className="text-sm xl:text-lg ">
             English
-          </MenubarTrigger>
-        </MenubarMenu>
-        <Separator orientation="vertical" />
-        <MenubarMenu>
-          <MenubarTrigger className="text-sm xl:text-lg flex gap-2 justify-center">
-            অনুসারে <ListFilter />
           </MenubarTrigger>
         </MenubarMenu>
       </Menubar>

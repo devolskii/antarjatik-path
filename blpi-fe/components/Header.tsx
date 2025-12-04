@@ -1,4 +1,4 @@
-import { Menu, Search } from "lucide-react";
+import { Menu } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -8,7 +8,7 @@ import {
   MenubarMenu,
   MenubarTrigger,
 } from "./ui/menubar";
-import { InputGroup, InputGroupAddon, InputGroupInput } from "./ui/input-group";
+import SearchBar from "./SearchBar";
 
 const Header = () => {
   return (
@@ -24,12 +24,9 @@ const Header = () => {
               <MenubarItem>বিবৃতি</MenubarItem>{" "}
               <MenubarItem>আমাদের সম্পর্কে</MenubarItem>{" "}
               <MenubarItem>বই/পত্রিকা PDF</MenubarItem>{" "}
-              <InputGroup className="rounded-none border">
-                <InputGroupInput placeholder="Search..." />
-                <InputGroupAddon>
-                  <Search />
-                </InputGroupAddon>
-              </InputGroup>
+              <div className="px-2 py-1.5">
+                <SearchBar />
+              </div>
               <MenubarItem disabled>English</MenubarItem>
             </MenubarContent>
           </MenubarMenu>
