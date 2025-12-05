@@ -12,7 +12,7 @@
 
 # testing
 /coverage
-
+/components/CHECKNavbar.tsx
 # next.js
 /.next/
 /out/

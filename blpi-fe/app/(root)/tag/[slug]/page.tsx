@@ -4,10 +4,8 @@ import { defineQuery } from "next-sanity";
 import PostCard from "@/components/PostCard";
 import { CardType } from "@/sanity/types";
 
-const TAG_QUERY = defineQuery(
-  `*[
-  _type == "tag" && slug.current == $slug
-][0]{
+const TAG_QUERY = defineQuery(`
+*[_type == "tag" && slug.current == $slug][0]{
   name,
   posts[]->{
     _id,
@@ -22,8 +20,8 @@ const TAG_QUERY = defineQuery(
       slug
     }
   }
-}`
-);
+}
+`);
 
 const TITLE_QUERY = defineQuery(
   `*[_type == "tag" && slug.current == $slug][0]{name}`

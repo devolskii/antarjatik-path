@@ -48,7 +48,7 @@ export default function Title({
         className={`sticky top-0 bg-white z-50 transition-all duration-300`}
       >
         <h1
-          className={`transform transition-all duration-300 ${isSticky ? "scale-90" : "scale-100"} ${isSticky ? "text-lg" : "text-2xl md:text-3xl xl:text-4xl"} font-bold mt-4 mb-3 xl:transform-none xl:transition-none`}
+          className={`font-serif transform transition-all duration-300 ${isSticky ? "scale-90" : "scale-100"} ${isSticky ? "text-lg" : "text-2xl md:text-3xl xl:text-4xl"} font-bold mt-4 mb-3 xl:transform-none xl:transition-none`}
         >
           {title}
         </h1>

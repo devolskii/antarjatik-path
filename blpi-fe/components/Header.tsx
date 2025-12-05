@@ -1,48 +1,28 @@
-import { Menu } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  Menubar,
-  MenubarContent,
-  MenubarItem,
-  MenubarMenu,
-  MenubarTrigger,
-} from "./ui/menubar";
-import SearchBar from "./SearchBar";
+import Navbar from "./Navbar";
 
 const Header = () => {
   return (
-    <header className="flex items-top justify-center">
-      <div className="mt-1.5 ">
-        <Menubar className="!rounded-none md:hidden border-none ">
-          <MenubarMenu>
-            <MenubarTrigger className="rounded-none">
-              <Menu />
-            </MenubarTrigger>
-            <MenubarContent className="rounded-none">
-              <MenubarItem>বিশ্লেষণ/তত্ত্ব</MenubarItem>
-              <MenubarItem>বিবৃতি</MenubarItem>{" "}
-              <MenubarItem>আমাদের সম্পর্কে</MenubarItem>{" "}
-              <MenubarItem>বই/পত্রিকা PDF</MenubarItem>{" "}
-              <div className="px-2 py-1.5">
-                <SearchBar />
-              </div>
-              <MenubarItem disabled>English</MenubarItem>
-            </MenubarContent>
-          </MenubarMenu>
-        </Menubar>
-      </div>
-      <div className="flex flex-col ">
+    <header className="">
+      <div className="flex items-center justify-center">
+        <div className="mt-1.5 md:hidden">
+          <Navbar mobile={true} />
+        </div>
         <div>
           <Link href="/">
             <Image src="/header.jpeg" alt="header" width={400} height={70} />
           </Link>
         </div>
-        <div className="mb-2">
-          <p className="font-serif text-sm text-center">
-            বলশেভিক লেনিনবাদী পার্টির মুখপত্র
-          </p>
-        </div>
+      </div>
+      <div className="mb-2">
+        <p className="font-serif text-sm text-center">
+          বলশেভিক লেনিনবাদী পার্টির মুখপত্র
+        </p>
+        <hr className="mt-3" />
+      </div>
+      <div className="hidden md:block">
+        <Navbar mobile={false} />
       </div>
     </header>
   );
