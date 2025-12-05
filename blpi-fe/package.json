@@ -34,7 +34,6 @@
     "eslint-config-next": "15.4.6",
     "tailwindcss": "^4",
     "tw-animate-css": "^1.3.6",
-    "typescript": "^5",
-    "vercel": "^48.12.1"
+    "typescript": "^5"
   }
 }
