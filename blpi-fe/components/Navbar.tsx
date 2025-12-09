@@ -37,7 +37,7 @@ const Navbar = ({ mobile, tags, years }: NavbarProps) => {
             <MenubarTrigger className="rounded-none">
               <Menu />
             </MenubarTrigger>
-            <MenubarContent className="rounded-none">
+            <MenubarContent className="rounded-none z-1000">
               <MenubarSub>
                 <MenubarSubTrigger className="font-sans">
                   বিষয়

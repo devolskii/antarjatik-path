@@ -22,9 +22,9 @@ const Header = ({ tags, years }: HeaderProps) => {
       <div className="md:hidden">
         <ScrollSenseHeader className="left-0">
           {/* sticky top-0 with z-[100] - Header sticks at the very top */}
-          <header className="bg-white z-100">
+          <header className="bg-white">
             <div className="flex items-center justify-center">
-              <div className="mt-1.5 md:hidden">
+              <div className="mt-1.5 md:hidden ">
                 <Navbar mobile={true} tags={tags} years={years} />
               </div>
               <div>
