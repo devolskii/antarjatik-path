@@ -59,37 +59,42 @@ export default function Title({
   }, []);
 
   return (
-    <div
-      className="flex items-center gap-x-3 xl:relative"
-      style={{
-        position: "sticky",
-        top: isHeaderVisible ? `${headerHeight}px` : "0px",
-        backgroundColor: "white",
-        zIndex: 50,
-        transition: "top 0.2s ease",
-      }}
-    >
-      {headings?.length ? (
-        <div className="xl:hidden">
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <button>
-                <List />
-              </button>
-            </DropdownMenuTrigger>
-            <TOCMobile headings={headings} />
-          </DropdownMenu>
-        </div>
-      ) : null}
+    <div>
+      <div
+        className="flex items-center gap-x-3 xl:relative md:hidden"
+        style={{
+          position: "sticky",
+          top: isHeaderVisible ? `${headerHeight}px` : "0px",
+          backgroundColor: "white",
+          zIndex: 50,
+          transition: "top 0.2s ease",
+        }}
+      >
+        {headings?.length ? (
+          <div className="xl:hidden">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button>
+                  <List />
+                </button>
+              </DropdownMenuTrigger>
+              <TOCMobile headings={headings} />
+            </DropdownMenu>
+          </div>
+        ) : null}
 
-      <div id="sticky-title" className="transition-all duration-300">
-        <h1
-          className={`font-serif font-bold mt-4 mb-3 transform transition-all duration-300
+        <div id="sticky-title" className="transition-all duration-300">
+          <h1
+            className={`font-serif font-bold mt-4 mb-3 transform transition-all duration-300
             ${isSticky ? "scale-90 text-lg" : "scale-100 text-2xl md:text-3xl xl:text-4xl"}
             xl:transform-none xl:transition-none`}
-        >
-          {title}
-        </h1>
+          >
+            {title}
+          </h1>
+        </div>
+      </div>
+      <div className="hidden md:block">
+        <h1 className="font-serif font-bold mt-4 mb-3 text-4xl">{title}</h1>
       </div>
     </div>
   );

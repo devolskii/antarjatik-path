@@ -146,9 +146,3 @@
 .fade-in {
   animation: fadeIn 0.5s ease-out forwards;
 }
-
-.scroll-sense-header {
-  left: 0 !important;
-  transform: none !important;
-  width: 100% !important;
-}

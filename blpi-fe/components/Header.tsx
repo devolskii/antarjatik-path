@@ -18,33 +18,73 @@ interface HeaderProps {
 
 const Header = ({ tags, years }: HeaderProps) => {
   return (
-    <ScrollSenseHeader>
-      {/* sticky top-0 with z-[100] - Header sticks at the very top */}
-      <header className="bg-white z-100">
-        <div className="flex items-center justify-center">
-          <div className="mt-1.5 md:hidden">
-            <Navbar mobile={true} tags={tags} years={years} />
+    <div>
+      <div className="md:hidden">
+        <ScrollSenseHeader className="left-0">
+          {/* sticky top-0 with z-[100] - Header sticks at the very top */}
+          <header className="bg-white z-100">
+            <div className="flex items-center justify-center">
+              <div className="mt-1.5 md:hidden">
+                <Navbar mobile={true} tags={tags} years={years} />
+              </div>
+              <div>
+                <Link href="/">
+                  <Image
+                    src="/header.jpeg"
+                    alt="header"
+                    width={400}
+                    height={70}
+                  />
+                </Link>
+              </div>
+            </div>
+            <div className="mb-2">
+              <p className="font-serif text-sm text-center">
+                বলশেভিক লেনিনবাদী পার্টির মুখপত্র
+              </p>
+              <hr className="mt-3" />
+            </div>
+            <div className="hidden md:block">
+              <Navbar mobile={false} tags={tags} years={years} />
+            </div>
+            <div className="md:hidden">
+              <SearchBar />
+            </div>
+          </header>
+        </ScrollSenseHeader>
+      </div>
+      <div className="hidden md:block">
+        <header className="bg-white z-100">
+          <div className="flex items-center justify-center">
+            <div className="mt-1.5 md:hidden">
+              <Navbar mobile={true} tags={tags} years={years} />
+            </div>
+            <div>
+              <Link href="/">
+                <Image
+                  src="/header.jpeg"
+                  alt="header"
+                  width={400}
+                  height={70}
+                />
+              </Link>
+            </div>
           </div>
-          <div>
-            <Link href="/">
-              <Image src="/header.jpeg" alt="header" width={400} height={70} />
-            </Link>
+          <div className="mb-2">
+            <p className="font-serif text-sm text-center">
+              বলশেভিক লেনিনবাদী পার্টির মুখপত্র
+            </p>
+            <hr className="mt-3" />
           </div>
-        </div>
-        <div className="mb-2">
-          <p className="font-serif text-sm text-center">
-            বলশেভিক লেনিনবাদী পার্টির মুখপত্র
-          </p>
-          <hr className="mt-3" />
-        </div>
-        <div className="hidden md:block">
-          <Navbar mobile={false} tags={tags} years={years} />
-        </div>
-        <div className="md:hidden">
-          <SearchBar />
-        </div>
-      </header>
-    </ScrollSenseHeader>
+          <div className="hidden md:block">
+            <Navbar mobile={false} tags={tags} years={years} />
+          </div>
+          <div className="md:hidden">
+            <SearchBar />
+          </div>
+        </header>
+      </div>
+    </div>
   );
 };
 
