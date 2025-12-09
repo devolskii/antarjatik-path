@@ -1,4 +1,4 @@
-import Header from "@/components/Header";
+import HeaderWrapper from "@/components/HeaderWrapper";
 
 export default function Layout({
   children,
@@ -6,7 +6,7 @@ export default function Layout({
   return (
     <main>
       <div className="w90 mx-auto">
-        <Header />
+        <HeaderWrapper />
         {children}
       </div>
     </main>
