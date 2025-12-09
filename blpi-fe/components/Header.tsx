@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "./Navbar";
+import SearchBar from "./SearchBar";
 
 const Header = () => {
   return (
@@ -23,6 +24,9 @@ const Header = () => {
       </div>
       <div className="hidden md:block">
         <Navbar mobile={false} />
+      </div>
+      <div className="md:hidden">
+        <SearchBar />
       </div>
     </header>
   );

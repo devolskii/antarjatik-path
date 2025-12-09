@@ -80,9 +80,6 @@ const Navbar = async ({ mobile }: { mobile: Boolean }) => {
               <MenubarItem className="font-sans">বই/পত্রিকা PDF</MenubarItem>
 
               <MenubarSeparator />
-              <SearchBar />
-
-              <MenubarSeparator />
               <MenubarItem className="font-sans">আমাদের সম্পর্কে</MenubarItem>
 
               <MenubarSeparator />

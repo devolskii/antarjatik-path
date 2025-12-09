@@ -60,7 +60,7 @@ const PostCard = ({
         </CardContent>
         <CardFooter>
           <p className="">{date}</p>
-          <ul className="flex">
+          <ul className="flex flex-wrap">
             {topic?.map((eachTopic: Topic) => (
               <li key={eachTopic._id}>
                 <Button variant="outline" className="ml-4">
