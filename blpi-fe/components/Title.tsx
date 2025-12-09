@@ -59,7 +59,7 @@ export default function Title({
   }, []);
 
   return (
-    <div>
+    <>
       <div
         className="flex items-center gap-x-3 xl:relative md:hidden"
         style={{
@@ -94,8 +94,10 @@ export default function Title({
         </div>
       </div>
       <div className="hidden md:block">
-        <h1 className="font-serif font-bold mt-4 mb-3 text-4xl">{title}</h1>
+        <h1 className="font-serif font-bold mt-4 mb-3 md:text-3xl xl:text-4xl">
+          {title}
+        </h1>
       </div>
-    </div>
+    </>
   );
 }
