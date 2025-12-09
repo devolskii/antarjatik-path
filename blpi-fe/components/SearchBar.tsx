@@ -5,7 +5,7 @@ import { Search } from "lucide-react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-export default function SearchBar() {
+export default function SearchBar({ mobile = false }: { mobile?: boolean }) {
   const [query, setQuery] = useState("");
   const router = useRouter();
 
@@ -17,7 +17,13 @@ export default function SearchBar() {
   };
 
   return (
-    <InputGroup className="lg:flex max-w-sm rounded-none">
+    <InputGroup
+      className={
+        mobile
+          ? "mx-auto max-w-sm rounded-none mb-3"
+          : "flex max-w-sm rounded-none"
+      }
+    >
       <InputGroupInput
         placeholder="বাংলায় খুঁজুন..."
         value={query}

@@ -20,7 +20,7 @@ const Header = ({ tags, years }: HeaderProps) => {
   return (
     <div>
       <div className="md:hidden">
-        <ScrollSenseHeader className="left-0">
+        <ScrollSenseHeader className="left-0" boxShadow="none">
           {/* sticky top-0 with z-[100] - Header sticks at the very top */}
           <header className="bg-white">
             <div className="flex items-center justify-center">
@@ -47,8 +47,8 @@ const Header = ({ tags, years }: HeaderProps) => {
             <div className="hidden md:block">
               <Navbar mobile={false} tags={tags} years={years} />
             </div>
-            <div className="md:hidden">
-              <SearchBar />
+            <div>
+              <SearchBar mobile={true} />
             </div>
           </header>
         </ScrollSenseHeader>
@@ -78,9 +78,6 @@ const Header = ({ tags, years }: HeaderProps) => {
           </div>
           <div className="hidden md:block">
             <Navbar mobile={false} tags={tags} years={years} />
-          </div>
-          <div className="md:hidden">
-            <SearchBar />
           </div>
         </header>
       </div>
