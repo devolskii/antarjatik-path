@@ -13,6 +13,8 @@
 # testing
 /coverage
 /components/CHECKNavbar.tsx
+/components/DiscardTitle.tsx
+/components/DiscardHeader.tsx
 # next.js
 /.next/
 /out/

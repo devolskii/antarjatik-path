@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 
 import { Menu } from "lucide-react";
 import {
@@ -34,7 +34,7 @@ const Navbar = ({ mobile, tags, years }: NavbarProps) => {
       >
         {mobile ? (
           <MenubarMenu>
-            <MenubarTrigger className="rounded-none">
+            <MenubarTrigger className="rounded-none p-0 m-0 border-none">
               <Menu />
             </MenubarTrigger>
             <MenubarContent className="rounded-none z-1000">
