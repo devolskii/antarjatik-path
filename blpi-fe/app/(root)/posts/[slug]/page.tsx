@@ -15,6 +15,7 @@ import { client } from "@/sanity/client";
 
 import TOC from "@/components/TOC";
 import Title from "@/components/Title";
+import { Metadata } from "next";
 
 const POST_QUERY = defineQuery(`
   *[_type == "post" &&
@@ -22,9 +23,49 @@ const POST_QUERY = defineQuery(`
   ][0]{title, content, date, mainImage}
   `);
 
-const TITLE_QUERY = defineQuery(`
-*[_type == "post" && slug.current == $slug][0]{title}
+const METADATA_QUERY = defineQuery(`
+*[_type == "post" && slug.current == $slug][0]{title, description, mainImage}
 `);
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const data = await client.fetch(METADATA_QUERY, { slug });
+  if (!data) {
+    return { title: "Post Not Found" };
+  }
+  const imageURL = urlFor(data.mainImage)
+    .height(500)
+    .width(700)
+    .quality(80)
+    .auto("format")
+    .url();
+  return {
+    title: data.title,
+    description: data.description,
+    openGraph: {
+      title: data.title,
+      description: data.description,
+      images: [
+        {
+          url: imageURL,
+          width: 700,
+          height: 500,
+          alt: data.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: data.title,
+      description: data.description,
+      images: [imageURL],
+    },
+  };
+}
 
 function extractEndnotes(content: Content) {
   const notes: MarkDef[] = [];
@@ -59,15 +100,6 @@ const extractHeadings = (content: Content) => {
   return headings;
 };
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
-  const title = await client.fetch(TITLE_QUERY, await params);
-  return await title;
-}
-
 export default async function PostPage({
   params,
 }: {
@@ -85,27 +117,6 @@ export default async function PostPage({
     : "https://placehold.co/550x310/png";
 
   const { notes, seen } = extractEndnotes(content);
-
-  //console.log("NOTES: ", notes);
-  /*
-    NOTES:  [
-    {
-      _key: 'be293779e695',
-      _type: 'endnote',
-      note: 'নে. স. র- নেতাজী সংগৃহীত রচনাবলী।'
-    },
-    {
-      _key: '1ef4c1aaa56f',
-      _type: 'endnote',
-      note: 'FQ.I.R – Fundamental Question of Indian Revolution. এই সবগুলোই নেতাজী রিসার্চ ব্যুরো কর্তৃক প্রকাশিত।'
-    }
-  ]
-  */
-
-  //console.log("SEEN: ", seen);
-  /*
-SEEN:  Map(2) { 'be293779e695' => 1, '1ef4c1aaa56f' => 2 }
-*/
 
   const headings = extractHeadings(content);
 
