@@ -27,8 +27,8 @@ interface HeaderProps {
 const MobileHeader = ({ tags, years }: HeaderProps) => {
   return (
     <div className="">
-      <ScrollSenseHeader className="left-0" boxShadow="none">
-        <div className="bg-white">
+      <ScrollSenseHeader boxShadow="none">
+        <div className="bg-white pb-1 w90 mx-auto">
           <div className="flex justify-between items-center">
             <div className="mt-1.5 md:hidden">
               <Navbar mobile={true} tags={tags} years={years} />
@@ -38,8 +38,8 @@ const MobileHeader = ({ tags, years }: HeaderProps) => {
                 <Image
                   src="/header.jpeg"
                   alt="header"
-                  width={300}
-                  height={50}
+                  width={200}
+                  height={30}
                 />
               </Link>
             </div>

@@ -5,10 +5,8 @@ export default function Layout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <main>
-      <div className="w90 mx-auto">
-        <HeaderWrapper />
-        {children}
-      </div>
+      <HeaderWrapper />
+      <div className="w90 mx-auto">{children}</div>
     </main>
   );
 }

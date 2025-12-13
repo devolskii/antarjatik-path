@@ -19,7 +19,9 @@ export default function SearchBar({ mobile = false }: { mobile?: boolean }) {
   return (
     <InputGroup
       className={
-        mobile ? "shadow-none rounded-none mb-3" : "flex max-w-sm rounded-none"
+        mobile
+          ? "shadow-none rounded-none border-black"
+          : "flex max-w-sm rounded-none"
       }
     >
       <InputGroupInput
