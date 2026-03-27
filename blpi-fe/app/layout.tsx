@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next"
 import { Noto_Sans_Bengali, Noto_Serif_Bengali } from "next/font/google";
 import "./globals.css";
 
@@ -24,7 +25,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
+  return (<>
     <html lang="en">
       <body
         className={`${bengaliSans.variable} ${bengaliSerif.variable} antialiased`}
@@ -32,5 +33,7 @@ export default function RootLayout({
         {children}
       </body>
     </html>
+    <Analytics/>
+    </>
   );
 }
