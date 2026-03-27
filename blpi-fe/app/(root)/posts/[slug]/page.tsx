@@ -147,7 +147,7 @@ export default async function PostPage({
     },
     block: {
       normal: ({ children }: { children?: React.ReactNode }) => (
-        <p className="text-justify text-lg leading-relaxed mb-4">{children}</p>
+        <p className="text-justify text-[1.06rem] leading-relaxed mb-4">{children}</p>
       ),
       h1: ({
         children,
@@ -160,7 +160,7 @@ export default async function PostPage({
         //console.log("Children: ", children);
         return (
           <a href={`#${value?._key}`}>
-            <h1 id={value?._key} className="text-3xl font-bold py-2">
+            <h1 id={value?._key} className="text-2xl font-bold py-2">
               {children}
             </h1>
           </a>
