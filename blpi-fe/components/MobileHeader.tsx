@@ -12,6 +12,7 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { Search } from "lucide-react";
+import { Menu } from "lucide-react";
 
 import { ScrollSenseHeader } from "react-scroll-sense-header";
 import "react-scroll-sense-header/dist/styles.css";
@@ -26,6 +27,21 @@ interface HeaderProps {
 
 const MobileHeader = ({ tags, years }: HeaderProps) => {
   return (
+    <div className="h-23 flex justify-between items-center mx-2 mb-2">
+      <div className="">
+        <Image
+          src="/mobile_header.jpeg"
+          alt="BLPI Logo Header"
+          width={280}
+          height={75}
+        />
+      </div>
+
+      <div className="grow text-white  flex justify-between">
+        <Search className="stroke-[4px] size-8" />
+        <Menu className="stroke-[4px] size-8" />
+      </div>
+      {/*
     <div className="">
       <ScrollSenseHeader boxShadow="none">
         <div className="bg-white pb-1 w90 mx-auto">
@@ -64,6 +80,7 @@ const MobileHeader = ({ tags, years }: HeaderProps) => {
           </div>
         </div>
       </ScrollSenseHeader>
+    </div> */}
     </div>
   );
 };

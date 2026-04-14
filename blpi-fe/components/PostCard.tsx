@@ -23,7 +23,7 @@ const PostCard = ({
   title: string;
   description: string;
   date: string;
-  mainImage?: MainImage;
+  mainImage: MainImage;
   topic: Topic[];
   slug: Slug;
 }) => {
@@ -34,10 +34,10 @@ const PostCard = ({
 
   return (
     <div>
-      <Card className="font-sans">
+      <Card className="bg-transparent font-sans border-none shadow-none">
         <CardHeader>
           <Link href={`/posts/${slug.current}`}>
-            <CardTitle className="font-sans text-xl xl:text-2xl">
+            <CardTitle className="text-[#ffc801] font-serif text-2xl font-bold">
               {title}
             </CardTitle>
           </Link>
@@ -59,8 +59,8 @@ const PostCard = ({
           </div>
         </CardContent>
         <CardFooter>
-          <p className="">{date}</p>
-          <ul className="flex flex-wrap">
+          <p className="text-white">{date}</p>
+          {/*<ul className="flex flex-wrap">
             {topic?.map((eachTopic: Topic) => (
               <li key={eachTopic._id}>
                 <Button variant="outline" className="ml-4">
@@ -70,7 +70,7 @@ const PostCard = ({
                 </Button>
               </li>
             ))}
-          </ul>
+          </ul>*/}
         </CardFooter>
       </Card>
     </div>

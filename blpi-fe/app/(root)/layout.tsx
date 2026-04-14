@@ -1,12 +1,15 @@
+import Footer from "@/components/Footer";
 import HeaderWrapper from "@/components/HeaderWrapper";
 
 export default function Layout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <main>
+    <main className="bg-[#DB261D] ">
       <HeaderWrapper />
-      <div className="w90 mx-auto">{children}</div>
+      {/*className="w90 mx-auto "*/}
+      <div>{children}</div>
+      <Footer />
     </main>
   );
 }
