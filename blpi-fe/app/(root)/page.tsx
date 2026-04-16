@@ -40,7 +40,7 @@ const home = async () => {
   const hero = await client.fetch(HERO_QUERY);
   //console.log("here's hero", hero);
   return (
-    <div className="fade-in">
+    <div className="fade-in ">
       <Hero
         title={hero.title}
         description={hero.description}

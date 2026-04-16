@@ -36,16 +36,16 @@ const Hero = ({
       </div>
       <Link
         href={`/posts/${slug.current}`}
-        className="text-[#ffc801] cursor-pointer"
+        className="text-[#DB261D] cursor-pointer"
       >
         <div className="w90 px-3 text-3xl font-extrabold  py-3 font-serif">
           <h1>{title}</h1>
         </div>
       </Link>
-      <div className="w90 px-3 text-white pb-1 font-serif">
+      <div className="w90 px-3 pb-1 font-serif">
         <p>{description}</p>
       </div>
-      <div className="w90 px-3 text-[#ffc801] pb-3 font-extrabold font-serif">
+      <div className="w90 px-3 text-[#DB261D] pb-3 font-extrabold font-serif">
         <p>{date}</p>
       </div>
     </>

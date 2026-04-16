@@ -37,7 +37,7 @@ const PostCard = ({
       <Card className="bg-transparent font-sans border-none shadow-none">
         <CardHeader>
           <Link href={`/posts/${slug.current}`}>
-            <CardTitle className="text-[#ffc801] font-serif text-2xl font-bold">
+            <CardTitle className="text-[#DB261D] font-serif text-2xl font-bold">
               {title}
             </CardTitle>
           </Link>
@@ -59,7 +59,7 @@ const PostCard = ({
           </div>
         </CardContent>
         <CardFooter>
-          <p className="text-white">{date}</p>
+          <p className="text-[#DB261D]">{date}</p>
           {/*<ul className="flex flex-wrap">
             {topic?.map((eachTopic: Topic) => (
               <li key={eachTopic._id}>

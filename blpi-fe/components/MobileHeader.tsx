@@ -27,7 +27,7 @@ interface HeaderProps {
 
 const MobileHeader = ({ tags, years }: HeaderProps) => {
   return (
-    <div className="h-23 w-full flex justify-between items-center px-2 mb-2 bg-[#DB261D]">
+    <div className="h-23 w-full flex justify-between items-center px-2 bg-[#DB261D]">
       <div className="">
         <Image
           src="/mobile_header.jpeg"

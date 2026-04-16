@@ -147,7 +147,9 @@ export default async function PostPage({
     },
     block: {
       normal: ({ children }: { children?: React.ReactNode }) => (
-        <p className="text-justify text-[1.06rem] lg:text-lg leading-relaxed mb-4">{children}</p>
+        <p className="text-justify text-[1.06rem] lg:text-lg leading-relaxed mb-4">
+          {children}
+        </p>
       ),
       h1: ({
         children,
@@ -188,7 +190,7 @@ export default async function PostPage({
   };
 
   return (
-    <article className="font-serif fade-in">
+    <article className="w90 mx-auto font-serif fade-in">
       <Title title={title} headings={headings} />
 
       <p className="">
