@@ -42,10 +42,10 @@ const Hero = ({
           <h1>{title}</h1>
         </div>
       </Link>
-      <div className="w90 px-3 text-white pb-1">
+      <div className="w90 px-3 text-white pb-1 font-serif">
         <p>{description}</p>
       </div>
-      <div className="w90 px-3 text-[#ffc801] pb-3 font-extrabold">
+      <div className="w90 px-3 text-[#ffc801] pb-3 font-extrabold font-serif">
         <p>{date}</p>
       </div>
     </>

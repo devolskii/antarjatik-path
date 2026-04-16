@@ -27,7 +27,7 @@ interface HeaderProps {
 
 const MobileHeader = ({ tags, years }: HeaderProps) => {
   return (
-    <div className="h-23 flex justify-between items-center mx-2 mb-2">
+    <div className="h-23 w-full flex justify-between items-center px-2 mb-2 bg-[#DB261D]">
       <div className="">
         <Image
           src="/mobile_header.jpeg"
@@ -37,7 +37,7 @@ const MobileHeader = ({ tags, years }: HeaderProps) => {
         />
       </div>
 
-      <div className="grow text-white  flex justify-between">
+      <div className="grow text-white flex justify-between">
         <Search className="stroke-[4px] size-8" />
         <Menu className="stroke-[4px] size-8" />
       </div>
