@@ -37,7 +37,7 @@ const MobileHeader = ({ tags, years }: HeaderProps) => {
         />
       </div>
 
-      <div className="grow text-white flex justify-between">
+      <div className="grow text-white flex justify-around">
         <Search className="stroke-[4px] size-8" />
         <Menu className="stroke-[4px] size-8" />
       </div>
