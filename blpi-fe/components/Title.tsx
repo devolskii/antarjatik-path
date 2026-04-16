@@ -34,7 +34,7 @@ export default function Title({
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <button>
-                <List />
+                <List className={`${isSticky ? "size-4" : ""}`} />
               </button>
             </DropdownMenuTrigger>
             <TOCMobile headings={headings} />
