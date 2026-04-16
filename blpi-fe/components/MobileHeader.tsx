@@ -29,12 +29,14 @@ const MobileHeader = ({ tags, years }: HeaderProps) => {
   return (
     <div className="h-23 w-full flex justify-between items-center px-2 bg-[#DB261D]">
       <div className="">
-        <Image
-          src="/mobile_header.jpeg"
-          alt="BLPI Logo Header"
-          width={280}
-          height={75}
-        />
+        <Link href="/">
+          <Image
+            src="/mobile_header.jpeg"
+            alt="BLPI Logo Header"
+            width={280}
+            height={75}
+          />
+        </Link>
       </div>
 
       <div className="grow text-white flex justify-around">
