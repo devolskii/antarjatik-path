@@ -28,13 +28,16 @@ export default function Title({
   }, []);
 
   return (
-    <div className="flex items-center gap-x-3 sticky top-0 bg-white xl:relative">
+    <div
+      id="sticky-header"
+      className={`${!isSticky ? "h-auto w90 mx-auto bg-white text-[#DB261D]" : "h-10 w-full bg-[#DB261D] text-white px-2"} flex items-center gap-x-3 sticky top-0 z-50 xl:relative`}
+    >
       {headings?.length ? (
-        <div className="xl:hidden">
+        <div className={`${isSticky ? "mt-1.5" : ""} xl:hidden`}>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <button>
-                <List className={`${isSticky ? "size-4" : ""}`} />
+                <List className={`${isSticky ? "size-4 stroke-3" : ""}`} />
               </button>
             </DropdownMenuTrigger>
             <TOCMobile headings={headings} />
@@ -43,12 +46,9 @@ export default function Title({
       ) : (
         ""
       )}
-      <div
-        id="sticky-header"
-        className={`sticky top-0 bg-white z-50 transition-all duration-300`}
-      >
+      <div className={`transition-all duration-300 flex-1 min-w-0`}>
         <h1
-          className={`font-serif transform transition-all duration-300 ${isSticky ? "scale-90" : "scale-100"} ${isSticky ? "" : "text-2xl md:text-3xl xl:text-4xl"} font-bold mt-4 mb-3 xl:transform-none xl:transition-none`}
+          className={`font-serif transition-all duration-300 ${isSticky ? "truncate" : "mt-2 text-2xl md:text-3xl xl:text-4xl"} font-bold xl:transform-none xl:transition-none`}
         >
           {title}
         </h1>
