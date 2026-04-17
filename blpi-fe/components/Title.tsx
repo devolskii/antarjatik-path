@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { DropdownMenu, DropdownMenuTrigger } from "./ui/dropdown-menu";
 import { TOCType } from "@/sanity/types";
 import TOCMobile from "./TOCMobile";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Title({
   title,
@@ -32,17 +34,16 @@ export default function Title({
       id="sticky-header"
       className={`${!isSticky ? "h-auto w90 mx-auto bg-white text-[#DB261D]" : "h-10 w-full bg-[#DB261D] text-white px-2"} flex items-center gap-x-3 sticky top-0 z-50 xl:relative`}
     >
-      {headings?.length ? (
-        <div className={`${isSticky ? "mt-1.5" : ""} xl:hidden`}>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <button>
-                <List className={`${isSticky ? "size-4 stroke-3" : ""}`} />
-              </button>
-            </DropdownMenuTrigger>
-            <TOCMobile headings={headings} />
-          </DropdownMenu>
-        </div>
+      {isSticky ? (
+        <Link href="/">
+          <Image
+            src="/yellogo.svg"
+            alt="logo"
+            width={25}
+            height={25}
+            priority
+          />
+        </Link>
       ) : (
         ""
       )}
@@ -52,6 +53,17 @@ export default function Title({
         >
           {title}
         </h1>
+      </div>
+
+      <div className={``}>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <button>
+              <List className="mt-1 size-6 stroke-3" />
+            </button>
+          </DropdownMenuTrigger>
+          {headings?.length ? <TOCMobile headings={headings} /> : ""}
+        </DropdownMenu>
       </div>
     </div>
   );

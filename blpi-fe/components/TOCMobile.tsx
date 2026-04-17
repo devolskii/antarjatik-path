@@ -23,7 +23,7 @@ const TOCMobile = ({ headings }: { headings: TOCType[] }) => {
       {
         rootMargin: "0px 0px -70% 0px",
         threshold: 0.1,
-      }
+      },
     );
 
     headings.forEach(({ link }) => {
@@ -36,8 +36,8 @@ const TOCMobile = ({ headings }: { headings: TOCType[] }) => {
 
   return (
     <DropdownMenuContent className="w-56 font-serif" align="start">
-      <DropdownMenuLabel className="text-xl">সূচি</DropdownMenuLabel>
       <DropdownMenuGroup>
+        <DropdownMenuLabel className="text-xl">সূচি</DropdownMenuLabel>
         {headings.map(({ title, link }) => (
           <DropdownMenuItem key={link}>
             <a
