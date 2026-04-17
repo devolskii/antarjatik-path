@@ -193,7 +193,7 @@ export default async function PostPage({
     <article className="font-serif fade-in">
       <Title title={title} headings={headings} />
 
-      <p className="w90 mx-auto">
+      <p className="w90 mx-auto text-sm mt-2">
         {new Date(date).toLocaleDateString("bn-in", {
           month: "long",
           year: "numeric",
