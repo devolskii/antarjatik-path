@@ -37,9 +37,9 @@ export default async function SearchPage({
   return (
     <div className="fade-in">
       <div className="mt-6">
-        <div className="flex justify-between px-2">
+        <div className="w90 mx-auto flex justify-between">
           <div>
-            <h1 className="text-xl font-semibold font-sans">
+            <h1 className="font-semibold font-sans">
               "{query}" অনুসন্ধানের ফলাফল
             </h1>
           </div>
@@ -49,7 +49,7 @@ export default async function SearchPage({
             </p>
           </div>
         </div>
-        <hr />
+        <hr className="mb-4 w90 mx-auto" />
         {postCards.length ? (
           <ul>
             {postCards.map((card: CardType) => (

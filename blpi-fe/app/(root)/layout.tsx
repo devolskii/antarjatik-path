@@ -5,11 +5,9 @@ export default function Layout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <main className="">
-      {/*<main className="bg-[#DB261D] ">*/}
+    <main className="min-h-screen flex flex-col">
       <HeaderWrapper />
-      {/*className="w90 mx-auto "*/}
-      <div>{children}</div>
+      <div className="flex-1">{children}</div>
       <Footer />
     </main>
   );
