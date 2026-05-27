@@ -37,10 +37,10 @@ export default async function SearchPage({
   return (
     <div className="fade-in">
       <div className="mt-6">
-        <div className="flex justify-between">
+        <div className="flex justify-between px-2">
           <div>
             <h1 className="text-xl font-semibold font-sans">
-              {query} অনুসন্ধানের ফলাফল
+              "{query}" অনুসন্ধানের ফলাফল
             </h1>
           </div>
           <div>
