@@ -20,7 +20,7 @@ export default function SearchBar({ mobile = false }: { mobile?: boolean }) {
     <InputGroup
       className={
         mobile
-          ? "shadow-none rounded-none border-none bg-[#DB261D] text-white"
+          ? "shadow-none rounded-none border-none bg-[#DB261D]"
           : "flex max-w-sm rounded-none"
       }
     >
@@ -29,10 +29,10 @@ export default function SearchBar({ mobile = false }: { mobile?: boolean }) {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         onKeyDown={handleKeyPress}
-        className="font-sans text-sm italic"
+        className="font-sans text-sm text-white placeholder:text-white placeholder:italic"
       />
-      <InputGroupAddon>
-        <Search />
+      <InputGroupAddon className={mobile ? "text-white" : ""}>
+        <Search className={mobile ? "text-white" : ""} />
       </InputGroupAddon>
     </InputGroup>
   );
