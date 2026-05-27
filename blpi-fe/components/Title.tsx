@@ -47,9 +47,9 @@ export default function Title({
       ) : (
         ""
       )}
-      <div className={`transition-all duration-300 flex-1 min-w-0`}>
+      <div className={`transition-all duration-300 flex-1 ease-out min-w-0`}>
         <h1
-          className={`font-serif transition-all duration-300 ${isSticky ? "truncate" : "mt-2 text-2xl md:text-3xl xl:text-4xl"} font-bold xl:transform-none xl:transition-none`}
+          className={`font-serif transition-all duration-300 ease-out ${isSticky ? "truncate" : "mt-2 text-2xl md:text-3xl xl:text-4xl"} font-bold xl:transform-none xl:transition-none`}
         >
           {title}
         </h1>
