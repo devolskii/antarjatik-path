@@ -1,6 +1,6 @@
 "use client";
 import { List } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { DropdownMenu, DropdownMenuTrigger } from "./ui/dropdown-menu";
 import { TOCType } from "@/sanity/types";
 import TOCMobile from "./TOCMobile";
@@ -15,52 +15,80 @@ export default function Title({
   headings?: TOCType[];
 }) {
   const [isSticky, setIsSticky] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const sentinelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const header = document.getElementById("sticky-header");
-      if (header) {
-        const { top } = header.getBoundingClientRect();
-        setIsSticky(top <= 0); // true when stuck to top
-      }
-    };
+    setMounted(true);
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const sentinel = sentinelRef.current;
+    if (!sentinel) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsSticky(!entry.isIntersecting);
+      },
+      { threshold: 0 },
+    );
+
+    observer.observe(sentinel);
+    return () => observer.disconnect();
   }, []);
 
+  // Use mounted to derive classes so server and first client render match
+  const sticky = mounted && isSticky;
+
   return (
-    <div
-      id="sticky-header"
-      className={`flex justify-between items-center sticky top-0 z-50 xl:relative transition-all duration-300 ease-out ${isSticky ? "gap-x-3 px-2 h-10 w-full bg-[#DB261D] text-white" : "h-auto w90 mx-auto bg-white text-[#DB261D]"}`}
-    >
-      <Link
-        href="/"
-        aria-hidden={!isSticky}
-        className={`transition-all duration-300 ease-out shrink-0 ${
-          isSticky ? "opacity-100 w-6.25" : "opacity-0 w-0 overflow-hidden"
+    <>
+      <div ref={sentinelRef} className="h-0" aria-hidden="true" />
+
+      <div
+        id="sticky-header"
+        className={`flex justify-between items-center sticky top-0 z-50 xl:relative transition-all duration-300 ease-out ${
+          sticky
+            ? "gap-x-3 px-2 h-10 w-full bg-[#DB261D] text-white"
+            : "h-auto w90 mx-auto bg-white text-[#DB261D]"
         }`}
       >
-        <Image src="/yellogo.svg" alt="logo" width={25} height={25} priority />
-      </Link>
-      <div className={`transition-all duration-300 flex-1 ease-out min-w-0`}>
-        <h1
-          className={`font-serif font-bold transition-all duration-300 ease-out ${isSticky ? "truncate text-base" : "mt-2 pr-3 text-2xl md:text-3xl xl:text-4xl"}`}
+        <Link
+          href="/"
+          aria-hidden={!sticky}
+          className={`transition-all duration-300 ease-out shrink-0 ${
+            sticky ? "opacity-100 w-6.25" : "opacity-0 w-0 overflow-hidden"
+          }`}
         >
-          {title}
-        </h1>
-      </div>
+          <Image
+            src="/yellogo.svg"
+            alt="logo"
+            width={25}
+            height={25}
+            priority
+          />
+        </Link>
 
-      <div className={``}>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <button>
-              <List className="mt-1 size-6 stroke-3" />
-            </button>
-          </DropdownMenuTrigger>
-          {headings?.length ? <TOCMobile headings={headings} /> : ""}
-        </DropdownMenu>
+        <div className="transition-all duration-300 flex-1 ease-out min-w-0">
+          <h1
+            className={`font-serif font-bold transition-all duration-300 ease-out ${
+              sticky
+                ? "truncate text-sm"
+                : "mt-2 pr-3 text-2xl md:text-3xl xl:text-4xl"
+            }`}
+          >
+            {title}
+          </h1>
+        </div>
+
+        <div>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <button>
+                <List className="mt-1 size-6 stroke-3" />
+              </button>
+            </DropdownMenuTrigger>
+            {headings?.length ? <TOCMobile headings={headings} /> : ""}
+          </DropdownMenu>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
