@@ -32,24 +32,20 @@ export default function Title({
   return (
     <div
       id="sticky-header"
-      className={`${!isSticky ? "h-auto w90 mx-auto bg-white text-[#DB261D]" : "h-10 w-full bg-[#DB261D] text-white px-2"} flex items-center gap-x-3 sticky top-0 z-50 xl:relative`}
+      className={`flex justify-between items-center sticky top-0 z-50 xl:relative transition-all duration-300 ease-out ${isSticky ? "gap-x-3 px-2 h-10 w-full bg-[#DB261D] text-white" : "h-auto w90 mx-auto bg-white text-[#DB261D]"}`}
     >
-      {isSticky ? (
-        <Link href="/">
-          <Image
-            src="/yellogo.svg"
-            alt="logo"
-            width={25}
-            height={25}
-            priority
-          />
-        </Link>
-      ) : (
-        ""
-      )}
+      <Link
+        href="/"
+        aria-hidden={!isSticky}
+        className={`transition-all duration-300 ease-out shrink-0 ${
+          isSticky ? "opacity-100 w-6.25" : "opacity-0 w-0 overflow-hidden"
+        }`}
+      >
+        <Image src="/yellogo.svg" alt="logo" width={25} height={25} priority />
+      </Link>
       <div className={`transition-all duration-300 flex-1 ease-out min-w-0`}>
         <h1
-          className={`font-serif transition-all duration-300 ease-out ${isSticky ? "truncate" : "mt-2 text-2xl md:text-3xl xl:text-4xl"} font-bold xl:transform-none xl:transition-none`}
+          className={`font-serif font-bold transition-all duration-300 ease-out ${isSticky ? "truncate text-base" : "mt-2 pr-3 text-2xl md:text-3xl xl:text-4xl"}`}
         >
           {title}
         </h1>
