@@ -28,7 +28,7 @@ export default function Title({
       ([entry]) => {
         setIsSticky(!entry.isIntersecting);
       },
-      { threshold: 0 },
+      { rootMargin: "-10px 0px 0px 0px" },
     );
 
     observer.observe(sentinel);
@@ -40,7 +40,7 @@ export default function Title({
 
   return (
     <>
-      <div ref={sentinelRef} className="h-0" aria-hidden="true" />
+      <div ref={sentinelRef} className="h-2" aria-hidden="true" />
 
       <div
         id="sticky-header"
