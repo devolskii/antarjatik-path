@@ -6,18 +6,22 @@ import Navbar from "./Navbar";
 import SearchBar from "./SearchBar";
 
 import { Slug } from "@/sanity/types";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuTrigger,
-} from "./ui/dropdown-menu";
-import { Search } from "lucide-react";
+import { ChevronsUpDown, Search } from "lucide-react";
 import { Menu } from "lucide-react";
 
-import { ScrollSenseHeader } from "react-scroll-sense-header";
-import "react-scroll-sense-header/dist/styles.css";
 import { useState } from "react";
-import MobileMenu from "./MobileMenu";
+import {
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTrigger,
+} from "./ui/drawer";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "./ui/collapsible";
+import { Button } from "./ui/button";
 
 type Tag = { _id: string; name: string; slug: Slug };
 type Year = { _id: string; name: string; slug: Slug };
@@ -53,55 +57,63 @@ const MobileHeader = ({ tags, years }: HeaderProps) => {
           >
             <Search className="stroke-[4px] size-8" />
           </button>
-          <button
-            type="button"
-            onClick={() => setShowMenu(!showMenu)}
-            aria-expanded={showMenu}
-            aria-label={showMenu ? "Hide Menu" : "Show Menu"}
-          >
-            <Menu className="stroke-[4px] size-8" />
-          </button>
+          <Drawer direction="right">
+            <DrawerTrigger asChild>
+              <button
+                type="button"
+                onClick={() => setShowMenu(!showMenu)}
+                aria-expanded={showMenu}
+                aria-label={showMenu ? "Hide Menu" : "Show Menu"}
+              >
+                <Menu className="stroke-[4px] size-8" />
+              </button>
+            </DrawerTrigger>
+            <DrawerContent className="bg-[#DB261D] text-white">
+              <DrawerHeader className="">নেভিগেশন মেনু</DrawerHeader>
+              <Collapsible>
+                <div className="flex items-center justify-between gap-4 px-4">
+                  <h2 className="font-bold">বিষয়</h2>
+                  <CollapsibleTrigger>
+                    <Button variant="ghost" size="icon" className="size-8">
+                      <ChevronsUpDown />
+                    </Button>
+                  </CollapsibleTrigger>
+                </div>
+                <CollapsibleContent className="flex flex-col gap-2 ml-2">
+                  {tags.map((tag) => (
+                    <Link key={tag._id} href={`/tag/${tag.slug?.current}`}>
+                      <Button variant="link" className="text-white">
+                        {tag.name}
+                      </Button>
+                    </Link>
+                  ))}
+                </CollapsibleContent>
+              </Collapsible>
+              <Collapsible>
+                <div className="flex items-center justify-between gap-4 px-4 mt-4">
+                  <h2 className="font-bold">বছর অনুযায়ী</h2>
+                  <CollapsibleTrigger>
+                    <Button variant="ghost" size="icon" className="size-8">
+                      <ChevronsUpDown />
+                    </Button>
+                  </CollapsibleTrigger>
+                </div>
+                <CollapsibleContent className="flex flex-col gap-2 ml-2">
+                  {years.map((year) => (
+                    <Link key={year._id} href={`/year/${year.slug?.current}`}>
+                      <Button variant="link" className="text-white">
+                        {year.name}
+                      </Button>
+                    </Link>
+                  ))}
+                </CollapsibleContent>
+              </Collapsible>
+              <h2 className="font-bold ml-4 mt-4">বই/পত্রিকা PDF</h2>
+              <h2 className="font-bold ml-4 mt-4">আমাদের সম্পর্কে</h2>
+              <h2 className="font-bold ml-4 mt-4">English</h2>
+            </DrawerContent>
+          </Drawer>
         </div>
-        {/*
-    <div className="">
-      <ScrollSenseHeader boxShadow="none">
-        <div className="bg-white pb-1 w90 mx-auto">
-          <div className="flex justify-between items-center">
-            <div className="mt-1.5 md:hidden">
-              <Navbar mobile={true} tags={tags} years={years} />
-            </div>
-            <div>
-              <Link href="/">
-                <Image
-                  src="/header.jpeg"
-                  alt="header"
-                  width={200}
-                  height={30}
-                />
-              </Link>
-            </div>
-            <div className="">
-              <DropdownMenu>
-                <DropdownMenuTrigger>
-                  <Search />
-                </DropdownMenuTrigger>
-                <DropdownMenuContent
-                  align="end"
-                  className="z-1000 rounded-none p-0 border-none shadow-none"
-                >
-                  <SearchBar mobile={true} />
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </div>
-          </div>
-          <div className="mb-2 mx-auto">
-            <p className="font-serif text-sm text-center">
-              বলশেভিক লেনিনবাদী পার্টির মুখপত্র
-            </p>
-          </div>
-        </div>
-      </ScrollSenseHeader>
-    </div> */}
       </div>
       <div
         className={`overflow-hidden transition-all duration-300 ease-out ${
@@ -116,7 +128,6 @@ const MobileHeader = ({ tags, years }: HeaderProps) => {
           <SearchBar mobile={true} />
         </div>
       </div>
-      <MobileMenu open={showMenu} onClose={() => setShowMenu(false)} />
     </div>
   );
 };
