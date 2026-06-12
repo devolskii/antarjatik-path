@@ -14,6 +14,7 @@ import {
   Drawer,
   DrawerContent,
   DrawerHeader,
+  DrawerTitle,
   DrawerTrigger,
 } from "./ui/drawer";
 import {
@@ -49,27 +50,29 @@ const MobileHeader = ({ tags, years }: HeaderProps) => {
         </div>
 
         <div className="grow text-white flex justify-around">
-          <button
-            type="button"
+          <Button
+            variant="ghost"
             onClick={() => setShowSearch(!showSearch)}
             aria-expanded={showSearch}
             aria-label={showSearch ? "Hide search" : "Show search"}
           >
             <Search className="stroke-[4px] size-8" />
-          </button>
+          </Button>
           <Drawer direction="right">
             <DrawerTrigger asChild>
-              <button
-                type="button"
+              <Button
+                variant="ghost"
                 onClick={() => setShowMenu(!showMenu)}
                 aria-expanded={showMenu}
                 aria-label={showMenu ? "Hide Menu" : "Show Menu"}
               >
                 <Menu className="stroke-[4px] size-8" />
-              </button>
+              </Button>
             </DrawerTrigger>
             <DrawerContent className="bg-[#DB261D] text-white">
-              <DrawerHeader className="">নেভিগেশন মেনু</DrawerHeader>
+              <DrawerHeader className="">
+                <DrawerTitle>নেভিগেশন মেনু</DrawerTitle>
+              </DrawerHeader>
               <Collapsible>
                 <div className="flex items-center justify-between gap-4 px-4">
                   <h2 className="font-bold">বিষয়</h2>
