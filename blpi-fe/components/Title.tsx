@@ -77,17 +77,20 @@ export default function Title({
             {title}
           </h1>
         </div>
-
-        <div>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <button>
-                <List className="mt-1 size-6 stroke-3" />
-              </button>
-            </DropdownMenuTrigger>
-            {headings?.length ? <TOCMobile headings={headings} /> : ""}
-          </DropdownMenu>
-        </div>
+        {headings?.length ? (
+          <div>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button>
+                  <List className="mt-1 size-6 stroke-3" />
+                </button>
+              </DropdownMenuTrigger>
+              <TOCMobile headings={headings} />
+            </DropdownMenu>
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     </>
   );

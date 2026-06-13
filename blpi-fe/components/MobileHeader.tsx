@@ -13,6 +13,7 @@ import { useState } from "react";
 import {
   Drawer,
   DrawerContent,
+  DrawerDescription,
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
@@ -69,9 +70,20 @@ const MobileHeader = ({ tags, years }: HeaderProps) => {
                 <Menu className="stroke-[4px] size-8" />
               </Button>
             </DrawerTrigger>
-            <DrawerContent className="bg-[#DB261D] text-white">
-              <DrawerHeader className="">
-                <DrawerTitle>নেভিগেশন মেনু</DrawerTitle>
+            <DrawerContent className="bg-[#DB261D] text-white border-none font-serif">
+              <DrawerHeader className="mb-8">
+                <DrawerTitle className="sr-only">আন্তর্জাতিক পথ</DrawerTitle>
+                <DrawerDescription className="sr-only">
+                  বলশেভিক লেনিনবাদী পার্টির মুখপত্র
+                </DrawerDescription>
+                <Link href="/">
+                  <Image
+                    src="/mobile_header.jpeg"
+                    alt="BLPI Logo Header"
+                    width={280}
+                    height={75}
+                  />
+                </Link>
               </DrawerHeader>
               <Collapsible>
                 <div className="flex items-center justify-between gap-4 px-4">
@@ -82,13 +94,11 @@ const MobileHeader = ({ tags, years }: HeaderProps) => {
                     </Button>
                   </CollapsibleTrigger>
                 </div>
-                <CollapsibleContent className="flex flex-col gap-2 ml-2">
+                <CollapsibleContent className="flex flex-col gap-2 ml-2 items-start">
                   {tags.map((tag) => (
-                    <Link key={tag._id} href={`/tag/${tag.slug?.current}`}>
-                      <Button variant="link" className="text-white">
-                        {tag.name}
-                      </Button>
-                    </Link>
+                    <Button variant="link" key={tag._id} className="text-white">
+                      <Link href={`/tag/${tag.slug?.current}`}>{tag.name}</Link>
+                    </Button>
                   ))}
                 </CollapsibleContent>
               </Collapsible>
@@ -101,13 +111,17 @@ const MobileHeader = ({ tags, years }: HeaderProps) => {
                     </Button>
                   </CollapsibleTrigger>
                 </div>
-                <CollapsibleContent className="flex flex-col gap-2 ml-2">
+                <CollapsibleContent className="flex flex-col gap-2 ml-2 items-start">
                   {years.map((year) => (
-                    <Link key={year._id} href={`/year/${year.slug?.current}`}>
-                      <Button variant="link" className="text-white">
+                    <Button
+                      variant="link"
+                      key={year._id}
+                      className="text-white"
+                    >
+                      <Link href={`/year/${year.slug?.current}`}>
                         {year.name}
-                      </Button>
-                    </Link>
+                      </Link>
+                    </Button>
                   ))}
                 </CollapsibleContent>
               </Collapsible>
